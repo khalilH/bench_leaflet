@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Test leaflet</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="Leaflet.markercluster/dist/MarkerCluster.css" rel="stylesheet">
+  <link href="Leaflet.markercluster/dist/MarkerCluster.Default.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="sidebar" class="col-sm-4 col-md-3 menubar">
+        <ul class="nav nav-menubar">
+
+          <!-- Formulaire d'identification -->
+          <li><a href="#">Indicatif Radio</a></li>
+          <div id="idDiv" >
+            <form id="myForm" onsubmit="return false;">
+              <div class="row">
+                <div class="form-group col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1">
+                  <div id="idInputDiv">
+                    <input type="text" class="form-control" name="indicatif" placeholder="Indicatif radio">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4">
+                  <label class="radio-inline">
+                    <input type="radio" name="type" value="bicycle" checked>
+                    <img src="images/bicycle.png" alt="vélo" class="imgButton">
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <label class="radio-inline">
+                    <input type="radio" name="type" value="bike">
+                    <img src="images/bike.png" alt="moto" class="imgButton">
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <label class="radio-inline">
+                    <input type="radio" name="type" value="car">
+                    <img src="images/car.png" alt="voiture" class="imgButton">
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <label class="radio-inline">
+                    <input type="radio" name="type" value="policeman">
+                    <img src="images/policeman.png" alt="piéton" class="imgButton">
+                  </label>
+                </div>
+                <div class="col-xs-4 ">
+                  <label class="radio-inline">
+                    <input type="radio" name="type" value="fourgon">
+                    <img src="images/fourgon.png" alt="car" class="imgButton">
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Exemple de sous-menu  -->
+          <li><a href="#">Recherche distance</a></li>
+          <div class="row">
+            <div class="form-group col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1">
+
+              <form id="myForm2">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input class="form-control" type="text" name="lat" value="48.84132995046667" placeholder="">
+                  </div>
+                  <div class="col-xs-6">
+                    <input class="form-control" type="text" name="lng" value='2.362522039125295' placeholder="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <input class="form-control" type="number" name="distance" min=0 placeholder="distance">
+                  </div>
+                  <div class="col-xs-6">
+                    <select name="unit" class="form-control">
+                      <option value="m">m</option>
+                      <option value="km">km</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-4">
+                    <button class="btn btn-default" type="button" name="button" onclick="getFeaturesByDistance()">Rechercher</button>
+                  </div>
+                </div>
+                <p>Maintenir crtl et cliquer sur la carte pour selectionner un point</p>
+                <p>Choisir une distance, puis cliquer sur 'Rechercher' pour rechercher les points dans le rayon choisi</p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Exemple de sous-menu  -->
+          <li><a href="#">Genération de features</a></li>
+          <div class="row">
+            <div class="form-group col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-xs-7">
+                  <input id="truc" class="form-control" type="number" min=0 placeholder="Generer">
+                </div>
+                <div class="col-xs-5">
+                  <button class="btn btn-default" onclick="resetRandom()">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exemple de sous-menu  -->
+          <!-- <li onclick="toggle('loremDiv')"><a href="#">Lorem</a></li>
+          <div class="row">
+          <p class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1" id="loremDiv">Lorem</p>
+        </div> -->
+
+
+      </ul>
+
+    </div>
+
+    <div id="mapid" class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+
+    </div>
+
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="leaflet/leaflet-src.js"></script>
+    <script src="lib/proj4.js"></script>
+    <script src="lib/proj4leaflet.js"></script>
+    <script src="Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+    <script src="lib/elasticsearch.jquery.js"></script>
+    <script src="style.js"></script>
+    <script src="couches.js"></script>
+
+    <script src="index.js"></script>
+  </body>
+  </html>
